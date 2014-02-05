@@ -67,8 +67,4 @@ def cconf ():
   v.LSMREF = "${MS:BASE}.refmodel.lsm.html"
   THRESH_PIX,THRESH_ISL = 50,15
   CLEAN_THRESH = ".4mJy",".1mJy",".05mJy"
-  
-# Now for things specific to this script here.
-dconf()
-
 
