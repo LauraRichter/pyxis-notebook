@@ -1,6 +1,9 @@
 
 import mqt,stefcal,imager,lsm,std,ms
 
+import os
+import subprocess
+
 ## 2. Procedures
 # Procedures are invoked from the command line (i.e. "pyxis runcal" or "pyxis per_ms[runcal]").
 # Think of them as recipes or something like that.
@@ -136,6 +139,8 @@ def makenoise ():
   
 def saveconf ():
   if OUTDIR and OUTDIR != ".":
+    if not os.path.isdir(OUTDIR):
+      subprocess.call(["mkdir", OUTDIR])
     x.sh("cp pyxis-*.py pyxis-*.conf tdlconf.profiles $OUTDIR");
 
 def makecube (npix=512,stokes="I"):
