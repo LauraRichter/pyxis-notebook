@@ -8,4 +8,4 @@ Files used in the pipeline:
 * Pyxis procedure & conf files: pyxis-conf.py, pyxis-procs.py, pyxis-RP3C147.conf 
 * Ipython notebook: 3C147_notebook.ipynb
 
-Run this pipeline using MS:     3C147-CD-LO.MS
+This pipeline was written for the data set MS:     3C147-CD-LO.MS
