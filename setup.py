@@ -7,6 +7,6 @@ setup(name='nbutils',
       description='Utilities for running Pyxis in the Ipython notebook',
       author='Laura Richter',
       author_email='laura@ska.ac.za',
-      url='https://github.com/LauraRichter/pyxis-pipeline.git',
+      url='https://github.com/LauraRichter/pyxis-notebook.git',
       packages=['nbutils',],
       )
