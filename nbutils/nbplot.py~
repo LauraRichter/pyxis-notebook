@@ -365,42 +365,45 @@ def plotGainsPerType(ms_name=None, ants=None, pols=None, soltype=None):
         fig.suptitle(figTitle, fontsize=16, horizontalalignment='center',verticalalignment='baseline')
         
         # for all antennas and pols, plot amplitude
-        for a, ant in enumerate(ants): 
+        for i, ant in enumerate(ants): 
             
-            for p, pol in enumerate(pols):
+            for pol in pols:
                 # plot amplitude
                 y_amp = np.abs(solns[ant][pol][:,:]) 
                 y0 = np.min(y_amp,axis=1)
                 yn = np.max(y_amp,axis=1)
-                axes[a,2*p].plot(xt,np.abs(solns[ant][pol][:,NF/2]))
-                axes[a,2*p].fill_between(xt, y0, yn, facecolor='gray', alpha=0.5, interpolate=True)
+                axes[i,2*pol].plot(xt,np.abs(solns[ant][pol][:,NF/2]))
+                axes[i,2*pol].fill_between(xt, y0, yn, facecolor='gray', alpha=0.5, interpolate=True)
                 # label
                 axlabel = 'ANT '+ant+' POL '+str(pol)+' AMP'
-                axes[a,2*p].annotate(axlabel,xy=(0.97,0.85), xycoords='axes fraction', fontsize=12,
+                axes[i,2*pol].annotate(axlabel,xy=(0.97,0.85), xycoords='axes fraction', fontsize=12,
                     horizontalalignment='right', verticalalignment='bottom', color='red',fontweight='normal') 
-                axes[a,2*p].set_title(axlabel)
-                axes[a,2*p].set_xlim([np.min(xt),np.max(xt)])
+                axes[i,2*pol].set_title(axlabel)
+                axes[i,2*pol].set_xlim([np.min(xt),np.max(xt)])
 
         # for all antennas and pols, plot phase
-        for a, ant in enumerate(ants):
+        for i, ant in enumerate(ants):
             
-            for p, pol in enumerate(pols):
+            for pol in pols:
                 # plot phase
                 y_phase = wrap_angle(np.angle(solns[ant][pol][:]))
+                #y0 = np.angle(solns[ant][pol][:,0]) 
+                #yn = np.angle(solns[ant][pol][:,NF-1]) 
+                #axes[i,2*pol].plot(xt, np.angle(solns[ant][pol][:,NF/2])) 
                 y0 = np.min(y_phase,axis=1) 
                 yn = np.max(y_phase,axis=1) 
-                axes[a,2*p+1].plot(xt, y_phase[:,NF/2])
-                axes[a,2*p+1].fill_between(xt, y0, yn, facecolor='gray', alpha=0.5, interpolate=True)
+                axes[i,2*pol+1].plot(xt, y_phase[:,NF/2])
+                axes[i,2*pol+1].fill_between(xt, y0, yn, facecolor='gray', alpha=0.5, interpolate=True)
                 
                 #label
                 axlabel = 'ANT '+ant+' POL '+str(pol)+' PHS'
-                axes[a,2*p+1].annotate(axlabel,xy=(0.97,0.85), xycoords='axes fraction', fontsize=12,
+                axes[i,2*pol+1].annotate(axlabel,xy=(0.97,0.85), xycoords='axes fraction', fontsize=12,
                     horizontalalignment='right', verticalalignment='bottom', color='green',fontweight='normal') 
-                axes[a,2*p+1].set_title(axlabel)
-                axes[a,2*p+1].set_xlim([np.min(xt),np.max(xt)])
+                axes[i,2*pol+1].set_title(axlabel)
+                axes[i,2*pol+1].set_xlim([np.min(xt),np.max(xt)])
                 # if the y limits are close to plus/minus pi, set to pi
                 if np.abs(np.max(yn) - np.pi) < 0.1:
-                    axes[a,2*p+1].set_ylim([-np.pi,np.pi])
+                    axes[i,2*pol+1].set_ylim([-np.pi,np.pi])
 
 def plotGainsPerMS(ms_name=None, ants=None, pols=None, soltype=None):
     """Plots solutions produced by pyxis, for specified MS.

@@ -8,5 +8,5 @@ setup(name='nbutils',
       author='Laura Richter',
       author_email='laura@ska.ac.za',
       url='https://github.com/LauraRichter/pyxis-pipeline.git',
-      packages=['nbutils'],
+      packages=['nbutils',],
       )
